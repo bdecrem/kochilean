@@ -1,0 +1,24 @@
+{
+	"compilerOptions": {
+		"target": "ES2022",
+		"module": "NodeNext",
+		"moduleResolution": "NodeNext",
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"downlevelIteration": true,
+		"outDir": "./dist",
+		"strict": false,
+		"skipLibCheck": true
+	},
+	"include": [
+		"src/**/*",
+		"lib/**/*",
+		"scripts/**/*",
+		"test-scripts/**/*",
+		"engine/**/*",
+		"commands/**/*",
+		"agents/**/*",
+		"test-wtaf-production.ts"
+	],
+	"exclude": ["node_modules", "scripts/archives"]
+}

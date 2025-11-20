@@ -1,0 +1,54 @@
+# Cache bust: 2025-09-29-01
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/api/health"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
+
+[environments.production]
+[environments.production.variables]
+NODE_ENV = "production"
+NEXT_TELEMETRY_DISABLED = "1"
+
+[[services]]
+[services.vibeceo]
+source = "web/"
+[services.vibeceo.build]
+builder = "NIXPACKS"
+buildCommand = "cd .. && npm ci --workspace=web && cd web && npm run build"
+[services.vibeceo.deploy]
+startCommand = "npm run start:web"
+healthcheckPath = "/api/health"
+
+[[services]]
+[services.vibeceo-websocket]
+source = "web/"
+[services.vibeceo-websocket.build]
+builder = "NIXPACKS"
+buildCommand = "cd .. && npm ci --workspace=web"
+[services.vibeceo-websocket.deploy]
+startCommand = "npm run start:ws"
+# Note: WebSocket server doesn't have an HTTP healthcheck endpoint
+# Railway will monitor the process instead
+
+[services.smsbot]
+source = "sms-bot/"
+[services.smsbot.build]
+builder = "NIXPACKS"
+buildCommand = "npm ci && npm run build"
+[services.smsbot.deploy]
+startCommand = "npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 300
+
+[services.vibeceo-discord-bot]
+source = "discord-bot/"
+[services.vibeceo-discord-bot.build]
+builder = "NIXPACKS"
+buildCommand = "npm ci && npm run build"
+[services.vibeceo-discord-bot.deploy]
+startCommand = "npm start"

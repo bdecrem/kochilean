@@ -1,0 +1,152 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/web/node_modules/
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/web/.next/
+
+# production
+/web/build
+/dist
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env.local.swp
+.env
+.env.development
+.env.test
+.env.production
+
+# Claude Code config directory (contains credentials)
+.claude/
+.mcp.json
+
+# Neo4j credentials
+**/neo4j.txt
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Dropbox ignore patterns
+*.conflicted copy*
+*'s conflicted copy*
+*.dropbox*
+.dropbox.attr
+.dropbox.cache
+
+# Crontab backups (contain tokens)
+crontab-backup-*.txt
+**/crontab-backup-*.txt
+
+# Discord Bot
+/discord-bot/dist
+/discord-bot/node_modules
+/discord-bot/gpt_latest_response.txt
+/discord-bot/data/episodes/
+/discord-bot/data/staff-meetings/
+
+# ignore Logs but keep directories
+/logs/*
+!/logs/.gitkeep
+/discord-bot/logs/*
+!/discord-bot/logs/.gitkeep
+
+# Experiment folders
+/discord-bot/experiments-*/
+/discord-bot/experiments-chatgpt/
+/discord-bot/experiments-claude/
+
+# Generated JS files from TypeScript
+/discord-bot/lib/discord/*.js
+# Generated weekend story files
+/discord-bot/data/weekend-stories/*.json
+/discord-bot/data/weekend-conversations/*.json
+# Nested discord-bot folder (mistake in project structure)
+/discord-bot/discord-bot/
+# Backup files
+*.bak.*
+*.bak
+*.backup
+*-backup
+*.working-backup
+
+.specstory
+/sms-bot/node_modules
+/sms-bot/dist
+# Ignore entire tiny folder
+tiny/
+
+# SMS Bot experiments folder - contains test files with potential secrets
+/sms-bot/experiments/
+
+# Claude outputs - these contain generated code and shouldn't be in git
+/sms-bot/data/claude_outputs/
+
+# Processed data files - temporary processing files
+/sms-bot/data/processed/
+
+# Large DALL-E images - these are too large for git
+/sms-bot/data/dalle-images/
+/sms-bot/mobile-test-screenshot.png
+
+# Large experiment files
+/discord-bot/experiments-codex/
+
+# Test scripts - often contain hardcoded secrets
+/sms-bot/test-scripts/
+/web/test-scripts/
+/discord-bot/test-scripts/
+# Individual test files that might contain secrets
+/sms-bot/scripts/test-*.js
+/web/scripts/test-*.js
+/web/scripts/test/
+/discord-bot/scripts/test-*.js
+# Root level test scripts (should never be here)
+/test-*.js
+/test-*.ts
+
+# Local state files for scripts
+.last-user-check
+/sms-bot/scripts/.last-user-check
+/sms-bot/scripts/.last-webtoys-check
+
+# Temporary/experimental uploads folder
+/web/UPLOADS/
+
+# iOS App Security - API Keys
+iPhone/Webtoys/Webtoys/APIKeys.plist
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Agent-generated data files
+/sms-bot/data/crypto-reports/
+/sms-bot/data/medical-daily/
+/sms-bot/data/arxiv-reports/*.json
+/sms-bot/data/arxiv-reports/*.md
+/sms-bot/data/arxiv-reports/*.py
